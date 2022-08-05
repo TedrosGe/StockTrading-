@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-msedge",
+            "request": "launch",
+            "name": "Open homepage.html",
+            "file": "/media/teddy/0123-4567/projects/Stocks-20220522T201926Z-001/Stocks/template/homepage.html"
+        }
+    ]
+}
