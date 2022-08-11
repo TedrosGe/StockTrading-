@@ -12,11 +12,8 @@ function App() {
 
   
   const[StockList,setStockList] = useState([])
-  const [stock, setStock] = useState('')
-  useEffect(()=> {
-    fetchStocks();
-    }, []
-  )
+  const [addStock, setAddStock] = useState('')
+  useEffect( ()=> {fetchStocks();}, [] )
   // read all stocks
   const fetchStocks = () => {
     axios.get('http://127.0.0.1:8000/home')
@@ -29,9 +26,15 @@ function App() {
       console.log(err)
     })
   };
+
   //post all stocks 
-  const addStockHandler = () =>{
-    axios.post('http://127.0.0.1:8000/stocks')
+  const addStockHandler =  (event) =>{
+    const newStock = {
+      "symbol": addStock
+  }
+    
+        axios.post('http://127.0.0.1:8000/stocks',{"symbol": addStock})
+      .then(res => console.log(res))
   }
 
   return (
@@ -47,9 +50,12 @@ function App() {
       </div>
   
 
-    <input className = "mb-2 form-control titleIn" onChange={ event => setStockList(event.target.value)}
+    <input className = "mb-2 form-control titleIn" 
+    onChange={ e => setAddStock(e.target.value)}
     placeholder = "Enter Stock Symbol"></input>
-     <button className='btn btn-outline-primart mx-2' onClick={{addStockHandler}}> Add Stock </button>
+    
+    <button className='btn btn-outline-primart mx-2' 
+     onClick={ e => addStockHandler(e)}> Add Stock </button>
     
      <div className = "mb-3" >
       <table striped bordered hover size ="sm" >
